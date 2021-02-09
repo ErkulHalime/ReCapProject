@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,16 +9,21 @@ namespace Business.Concrete
 {
     public class BrandManager : IBrandService
     {
-        IBrandService _brands;
+        IBrandDal _brandDal;
 
-        public BrandManager(IBrandService brands)
+        public BrandManager(IBrandDal brandDal)
         {
-            _brands = brands;
+            _brandDal = brandDal;
         }
 
         public List<Brand> GetAll()
         {
-            return _brands.GetAll();
+            return _brandDal.GetAll();
+        }
+
+        public Brand GetById(int brandId)
+        {
+            return _brandDal.Get(b=>b.Id == brandId);
         }
     }
 }
