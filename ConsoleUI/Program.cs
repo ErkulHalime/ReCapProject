@@ -10,13 +10,71 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarDetailDtos())
+            // CarsDetail();
+            // CustomerTest();
+            //AddUser();
+            //AddRental();
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            foreach (var rental in rentalManager.GetRentalDetails().Data)
             {
-                Console.WriteLine(car.CarName + "/" + car.BrandName + "/" + car.ColorName + "/" + car.DailyPrice);
+                Console.WriteLine($"{rental.Id}\t{rental.CarName}\t{rental.CustomerName}\t{rental.RentDate}\t{rental.ReturnDate}");
             }
 
+        }
 
+        private static void AddRental()
+        {
+            Rental rentalForAdd = new Rental
+            {
+                CarId = 2,
+                CustomerId = 2,
+                RentDate = DateTime.Now,
+                ReturnDate = null
+            };
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            rentalManager.Add(rentalForAdd);
+        }
+
+        private static void AddUser()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            User userForAdd = new User
+            {
+
+                FirstName = "Esra",
+                LastName = "Yılmaz",
+                Email = "esr@gmail.com",
+                Password = "123456"
+
+            };
+            userManager.Add(userForAdd);
+        }
+
+        private static void CustomerTest()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+           
+            customerManager.Add(new Customer { UserId = 1, CompanyName = "Company1" });
+            var result = customerManager.GetAll();
+            foreach (var customer in result.Data)
+            {
+                Console.WriteLine(customer.CompanyName);
+            }
+            
+        }
+
+        private static void CarsDetail()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            var result = carManager.GetCarDetailDtos();
+            if (result.Success)
+            {
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.CarName + "/" + car.BrandName + "/" + car.ColorName + "/" + car.DailyPrice);
+                }
+
+            }
         }
     }
 }
