@@ -24,15 +24,13 @@ namespace Business.Concrete
         public IResult Add(Rental rental)
         {
          
-            if (rental.ReturnDate == null && _rentalDal.GetRentalDetails(c => c.CarId == rental.CarId).Count > 0)
+            if (rental.ReturnDate == null && _rentalDal.RentalDetailDtos(c => c.CarId == rental.CarId).Count > 0)
             {
               
                 return new ErrorResult(Messages.FailedRentalAddOrUpdate);
             }
        
             _rentalDal.Add(rental);
-            
-           
             return new SuccessResult(Messages.RentalAdded);
         }
 
@@ -54,7 +52,7 @@ namespace Business.Concrete
 
         public IDataResult<List<RentalDetailDto>> GetRentalDetails(Expression<Func<Rental, bool>> filter = null)
         {
-            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(filter), Messages.ReturnedRental);
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.RentalDetailDtos(filter), Messages.ReturnedRental);
         }
 
         public IResult Update(Rental rental)

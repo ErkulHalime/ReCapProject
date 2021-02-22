@@ -13,20 +13,25 @@ namespace ConsoleUI
             // CarsDetail();
             // CustomerTest();
             //AddUser();
-            //AddRental();
+            AddRental();
+           // GetRentalDetails();
+
+        }
+
+        private static void GetRentalDetails()
+        {
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
             foreach (var rental in rentalManager.GetRentalDetails().Data)
             {
                 Console.WriteLine($"{rental.Id}\t{rental.CarName}\t{rental.CustomerName}\t{rental.RentDate}\t{rental.ReturnDate}");
             }
-
         }
 
         private static void AddRental()
         {
             Rental rentalForAdd = new Rental
             {
-                CarId = 2,
+                CarId = 1,
                 CustomerId = 2,
                 RentDate = DateTime.Now,
                 ReturnDate = null
