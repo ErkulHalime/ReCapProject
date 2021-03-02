@@ -47,5 +47,15 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.carDetailDtos());
         }
+
+        public IResult IsExist(int carId)
+        {
+            var carExist = GetById(carId);
+            if (carExist.Data != null)
+            {
+                return new SuccessResult(Messages.CarExists);
+            }
+            return new ErrorResult(Messages.CarNotFound);
+        }
     }
 }
