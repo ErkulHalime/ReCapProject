@@ -122,11 +122,12 @@ namespace Business.Concrete
         }
         public IDataResult<List<CarImage>> GetCarImagesByCarId(int carId)
         {
+
             if (!_carImageDal.GetAll(p => p.CarId == carId).Any())
             {
                 if (_carService.IsExist(carId).Success)
                 {
-                    return new SuccessDataResult<List<CarImage>>(new List<CarImage> {new CarImage {Id = 0,
+                    return new SuccessDataResult<List<CarImage>>(new List<CarImage> {new CarImage {
                     CarId = carId,
                     ImagePath = "NoPicCar.png",
                     Date = DateTime.MinValue

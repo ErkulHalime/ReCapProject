@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants
@@ -39,5 +40,13 @@ namespace Business.Constants
 
         public static string CarImageNotFound = "Car image can not found";
         public static string CarNotFound = "Car not found";
+        public static string AuthorizationDenied = "You have no authority.";
+
+        public static string UserRegistered = "User registered";
+        public static string UserNotFound = "User not found";
+        public static string PasswordError = "wrong password";
+        public static string SuccessfulLogin = "Successful login";
+        public static string UserAlreadyExists = "User already exist";
+        public static string AccessTokenCreated = "created Token";
     }
 }

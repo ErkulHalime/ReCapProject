@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
@@ -12,9 +13,9 @@ namespace ConsoleUI
         {
             // CarsDetail();
             // CustomerTest();
-            //AddUser();
-            AddRental();
-           // GetRentalDetails();
+            // AddUser();
+               AddRental();
+            // GetRentalDetails();
 
         }
 
@@ -40,20 +41,20 @@ namespace ConsoleUI
             rentalManager.Add(rentalForAdd);
         }
 
-        private static void AddUser()
-        {
-            UserManager userManager = new UserManager(new EfUserDal());
-            User userForAdd = new User
-            {
+        //private static void AddUser()
+        //{
+        //    UserManager userManager = new UserManager(new EfUserDal());
+        //    User userForAdd = new User
+        //    {
 
-                FirstName = "Esra",
-                LastName = "Yılmaz",
-                Email = "esr@gmail.com",
-                Password = "123456"
+        //        FirstName = "Esra",
+        //        LastName = "Yılmaz",
+        //        Email = "esr@gmail.com",
+        //        Password = "123456"
 
-            };
-            userManager.Add(userForAdd);
-        }
+        //    };
+        //    userManager.Add(userForAdd);
+        //}
 
         private static void CustomerTest()
         {

@@ -4,15 +4,17 @@ using Business.Abstract;
 using Business.Concrete;
 using Castle.DynamicProxy;
 using Core.Utulities.Interceptors;
+using Core.Utulities.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Business.DependencyResolvers.Autofac
 {
-    public class AutoFacBusinessModule:Module
+    public class AutofacBusinessModule:Module
     {
         protected override void Load(ContainerBuilder builder)
         {
@@ -33,6 +35,12 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+
+           // builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>().SingleInstance();
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
