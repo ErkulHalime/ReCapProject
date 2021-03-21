@@ -40,7 +40,7 @@ namespace Business.Constants
 
         public static string CarImageNotFound = "Car image can not found";
         public static string CarNotFound = "Car not found";
-        public static string AuthorizationDenied = "You have no authority.";
+        public static string AuthorizationDenied = "You have not authority.";
 
         public static string UserRegistered = "User registered";
         public static string UserNotFound = "User not found";
