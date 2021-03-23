@@ -64,6 +64,42 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpPost("update")]
+        public ActionResult Update(Car car)
+        {
+            var result = _carService.Update(car);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+
+        [HttpPost("delete")]
+        public ActionResult Delete(Car car)
+        {
+            var result = _carService.Delete(car);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+
+        [HttpPost("transaction")]
+        public ActionResult TransactionTest(Car car)
+        {
+            var result = _carService.AddTransactionalTest(car);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+
+            return BadRequest(result.Message);
+        }
+
 
     }
 }

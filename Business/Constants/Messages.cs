@@ -10,6 +10,8 @@ namespace Business.Constants
         public static string CarAdded = "Car added.";
         public static string BrandAdded = "Brand  added.";
         public static string ColorAdded = "Color added.";
+        public static string CarUpdated ="Car updated";
+        public static string CarDeleted = "Car deleted";
         public static string CarNameInvalid = "Car's  name is invalid";
         public static string MaintenanceTime = "System is under maintenance";
         public static string CarListed = "Car listed";
@@ -48,5 +50,6 @@ namespace Business.Constants
         public static string SuccessfulLogin = "Successful login";
         public static string UserAlreadyExists = "User already exist";
         public static string AccessTokenCreated = "created Token";
+        
     }
 }
